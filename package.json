@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/desiba"
+    "registry": "https://npm.pkg.github.com/@desiba"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
