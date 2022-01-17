@@ -32,6 +32,7 @@ jobs:
           node-version: 14
       - name: Publish
         run: |
+          echo "@desiba:registry=https://npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
           npm publish --ignore-scripts
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
