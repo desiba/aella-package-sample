@@ -1,24 +1,24 @@
 {
-  "name": "errors",
+  "name": "aella-package-sample",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/desiba-1"
+    "registry": "https://npm.pkg.github.com/desiba"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aellacredit/errors.git"
+    "url": "git+github.com/desiba/aella-package-sample.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aellacredit/errors/issues"
+    "url": "https://github.com/desiba/aella-package-sample/issues"
   },
-  "homepage": "https://github.com/aellacredit/errors#readme",
+  "homepage": "https://github.com/desiba/aella-package-sample#readme",
   "dependencies": {
     "js-yaml": "^4.1.0",
     "yaml-to-json": "^0.3.0",
