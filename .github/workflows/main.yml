@@ -17,8 +17,3 @@ jobs:
       - run: npm publish
         env: 
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-<<<<<<< HEAD
-          
-  
-=======
->>>>>>> 6ba22f57a3403e87818c031fb4fa8eb5501ec254

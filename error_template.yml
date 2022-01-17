@@ -1,7 +1,10 @@
 ---
 3001:
   title:  'wallet'
-  message:  'wallet is not available'
+  message:
+    ng: 'fresh'
 3002:
   title:  'wallet'
-  message:  'wallet is not available'
+  message:
+    ng: 'wallet-ng is not available'
+    fr: 'wallet-fr is not available'
