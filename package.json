@@ -20,9 +20,8 @@
   },
   "homepage": "https://github.com/desiba/aella-package-sample#readme",
   "dependencies": {
-    "js-yaml": "^4.1.0",
-    "yaml-to-json": "^0.3.0",
-    "yamljs": "^0.3.0"
+    "@desiba/github-actions-package": "^1.0.0",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "chai": "^4.3.4",

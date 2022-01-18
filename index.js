@@ -4,9 +4,8 @@ const fs = require('fs');
 const jsonObj = yaml.load(fs.readFileSync(inputfile));
 const AppException = require('./error');
 
-
 const result = {};
-    
+
 const fetch = (code, en = 'ng') => {
 
   code = ( typeof(code) == "number" ) ? JSON.stringify(code) : code;
