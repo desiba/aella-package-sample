@@ -2,8 +2,8 @@ const yaml = require('js-yaml');
 const fs = require('fs')
 const crypto = require('crypto');
 const path = require('path')
-const inputfile = './error_template.yml';
-const AppException = require('./error');
+const inputfile = path.join(__dirname, './error_template.yml');
+const {Exception} = require('./error');
 const result = {};
 
 const generateChecksum = (str, algorithm, encoding) => {
@@ -15,10 +15,29 @@ const config = (option = {}) => {
     let parsed = fs.readFileSync(option.path, "utf-8");
     let checksum = generateChecksum(parsed);
     let fileContent = fs.readFileSync('loaded_hashed_file.txt').toString().split("\n");
+
+    let pathFileObj = yaml.load(parsed);
+
+    let duplicateCode = false;
+
     if(!fileContent.includes(checksum)){
+
+      let innerFileObj = yaml.load(fs.readFileSync(inputfile));
+      for(let i in pathFileObj){
+        
+        if(innerFileObj.hasOwnProperty(i)){
+          duplicateCode = true;
+          break
+        }
+      }
+  
+      if(duplicateCode){
+        throw Error('duplicate error-code passed');
+      }
+  
       fs.appendFileSync('loaded_hashed_file.txt', "\n"+checksum);
       parsed.split(/\r?\n/).forEach(line => {
-        fs.appendFileSync('error_template.yml', "\n"+line, function (err) {
+        fs.appendFileSync(inputfile, "\n"+line, function (err) {
           if (err) throw err;
         })
       })
@@ -26,10 +45,8 @@ const config = (option = {}) => {
   }
 }
 
-const fetch = (code, en = 'ng') => {
-
-  //config({ path: path.join(__dirname, 'xyz.yml') });
-
+const fetch = (code, en = 'eng') => {
+  //config({ path: path.join(__dirname, './xyz.yml') });
   const jsonObj = yaml.load(fs.readFileSync(inputfile));
   code = ( typeof(code) == "number" ) ? JSON.stringify(code) : code;
   for(let obj in jsonObj){
@@ -40,12 +57,14 @@ const fetch = (code, en = 'ng') => {
       break;
     }
   }
+  return result;
 }
+
 
 module.exports = {
   fetch,
   config,
-  AppException
+  Exception
 }
 
 

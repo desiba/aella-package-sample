@@ -1,19 +1,11 @@
-
 3003:
   title:  'wallet'
   message:
-    ng: 'fresh'
+    eng: 'fresh'
+    fr: 'wallet-fr is not available'
+
 3004:
   title:  'wallet'
   message:
-    ng: 'wallet-ng is not available'
-    fr: 'wallet-fr is not available'
-3003:
-  title:  'wallet'
-  message:
-    ng: 'fresh'
-3001:
-  title:  'wallet'
-  message:
-    ng: 'wallet-ng is not available'
+    eng: 'wallet-ng is not available'
     fr: 'wallet-fr is not available'

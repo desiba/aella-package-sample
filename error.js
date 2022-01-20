@@ -1,16 +1,46 @@
-class AppException extends Error {
+const path = require('path')
+const yaml = require('js-yaml');
+const fs = require('fs')
+const inputfile = path.join(__dirname, './error_template.yml');
+const jsonObj = yaml.load(fs.readFileSync(inputfile));
 
-    constructor(code, message = {}) {
-      const fullMsg = message ? `${code}: ${message}` : code;
-      super(fullMsg);
-      this.name = code;
-      this.code = code;
-      this.message = fullMsg;
+function getErrorObject(code){
+  for(let obj in jsonObj){
+    if(code === obj) return  { code, message: jsonObj[obj]['message']['eng'] }
+  }
+}
+
+class Exception extends Error {
+
+    constructor(code = null, message = 'Something went wrong') {
+      super()
+      this.setCode(code);
+      this.message = message;
     }
-    
-    toString() {
-      return this.message;
+
+    getCode(){
+      return this.code
     }
+
+    setCode(statusCode){
+      this.code = statusCode;
+    }
+
+    get message(){
+      return this._message;
+    }
+
+    set message(newMsg){
+      let errorObj = getErrorObject(this.code);
+      if(errorObj === undefined){
+        this._message = newMsg
+      }else{
+        this._message = errorObj['message']
+      }
+    }
+
   }
 
-  module.exports = AppException
+  module.exports = {
+    Exception
+  }
