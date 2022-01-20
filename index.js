@@ -10,11 +10,12 @@ const generateChecksum = (str, algorithm, encoding) => {
     return crypto.createHash(algorithm || 'md5').update(str, 'utf8').digest(encoding || 'hex');
 };
 
+
 const config = (option = {}) => {
   if(option.path !== null){
     let parsed = fs.readFileSync(option.path, "utf-8");
     let checksum = generateChecksum(parsed);
-    let fileContent = fs.readFileSync('loaded_hashed_file.txt').toString().split("\n");
+    let fileContent = fs.readFileSync(path.join(__dirname, 'loaded_hashed_file.txt')).toString().split("\n");
 
     let pathFileObj = yaml.load(parsed);
 
@@ -35,7 +36,7 @@ const config = (option = {}) => {
         throw Error('duplicate error-code passed');
       }
   
-      fs.appendFileSync('loaded_hashed_file.txt', "\n"+checksum);
+      fs.appendFileSync(path.join(__dirname, 'loaded_hashed_file.txt'), "\n"+checksum);
       parsed.split(/\r?\n/).forEach(line => {
         fs.appendFileSync(inputfile, "\n"+line, function (err) {
           if (err) throw err;
@@ -46,7 +47,11 @@ const config = (option = {}) => {
 }
 
 const fetch = (code, en = 'eng') => {
-  //config({ path: path.join(__dirname, './xyz.yml') });
+
+
+  //config({ path: path.join(__dirname, 'xyz.yml') });
+
+
   const jsonObj = yaml.load(fs.readFileSync(inputfile));
   code = ( typeof(code) == "number" ) ? JSON.stringify(code) : code;
   for(let obj in jsonObj){
@@ -59,7 +64,6 @@ const fetch = (code, en = 'eng') => {
   }
   return result;
 }
-
 
 module.exports = {
   fetch,
