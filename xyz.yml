@@ -1,0 +1,9 @@
+3003:
+  title:  'wallet'
+  message:
+    ng: 'fresh'
+3001:
+  title:  'wallet'
+  message:
+    ng: 'wallet-ng is not available'
+    fr: 'wallet-fr is not available'
