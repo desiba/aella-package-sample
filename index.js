@@ -10,15 +10,12 @@ const generateChecksum = (str, algorithm, encoding) => {
     return crypto.createHash(algorithm || 'md5').update(str, 'utf8').digest(encoding || 'hex');
 };
 
-
 const config = (option = {}) => {
   if(option.path !== null){
     let parsed = fs.readFileSync(option.path, "utf-8");
     let checksum = generateChecksum(parsed);
     let fileContent = fs.readFileSync(path.join(__dirname, 'loaded_hashed_file.txt')).toString().split("\n");
-
     let pathFileObj = yaml.load(parsed);
-
     let duplicateCode = false;
 
     if(!fileContent.includes(checksum)){
@@ -33,7 +30,7 @@ const config = (option = {}) => {
       }
   
       if(duplicateCode){
-        throw Error('duplicate error-code passed');
+        throw new Error('duplicate error-code passed');
       }
   
       fs.appendFileSync(path.join(__dirname, 'loaded_hashed_file.txt'), "\n"+checksum);
