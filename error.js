@@ -1,8 +1,8 @@
 const path = require('path')
 const yaml = require('js-yaml');
 const fs = require('fs')
-const inputfile = path.join(__dirname, './error_template.yml');
-const jsonObj = yaml.load(fs.readFileSync(inputfile));
+const inputfile = path.join(__dirname, './error_bank.json');
+const jsonObj = fs.readFileSync(inputfile);
 
 function getErrorObject(code){
   for(let obj in jsonObj){

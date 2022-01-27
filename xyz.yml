@@ -1,8 +1,5 @@
-3003:
-  title:  'wallet'
-  message:
-    ng: 'fresh'
-3009:
+
+3005:
   title:  'wallet'
   message:
     ng: 'wallet-ng is not available'

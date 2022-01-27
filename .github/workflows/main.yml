@@ -13,8 +13,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://npm.pkg.github.com
-          scope: '@aellacredit/errors'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@desiba/aella-package-sample'
       - run: npm install
       - run: npm publish
         env:
