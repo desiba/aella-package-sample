@@ -24,7 +24,7 @@ const config = (option = {}) => {
       }
       let newObject = { ...pathFileJsonObj, ...jsonFile };
       fs.writeFileSync(jsonPathFile, JSON.stringify(newObject));
-      fs.appendFileSync(path.join(__dirname, 'loaded_hashed_file.txt'), checksum+"\n");
+      fs.appendFile(path.join(__dirname, 'loaded_hashed_file.txt'), checksum+"\n");
     }
   }
 }
