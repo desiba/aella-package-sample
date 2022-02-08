@@ -1,23 +1,12 @@
 {
   "name": "@desiba/aella-package-sample",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/desiba/aella-package-sample.git"
-  },
+
   "version": "1.0.5",
-  "main": "index.js",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@desiba" 
-  },
-  "scripts": {
-    "start": "node index.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/desiba/aella-package-sample/issues"
-  },
-  "homepage": "https://github.com/desiba/aella-package-sample#readme",
+  
+  "files": [
+    "index.js"
+  ],
+  
   "dependencies": {
     "js-yaml": "^4.1.0"
   },
